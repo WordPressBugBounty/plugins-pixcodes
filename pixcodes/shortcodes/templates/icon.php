@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
 
 $output = '<i class="pixcode  pixcode--icon  icon-' . esc_attr( $name ) . '  ' . esc_attr( $type ) . '  ' . esc_attr( $size ) . '  ' . esc_attr( $class ) . '"></i>';
 
@@ -12,4 +15,4 @@ if ( ! empty( $link ) ) {
 	$output = '<a class="pixcode-icon-link" ' . $link . '">' . $output . '</a>';
 }
 
-echo $output;
+echo wp_kses_post( $output );

@@ -1,9 +1,10 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
 // get needed classes
 $classes = 'pixcode  pixcode--heading article__headline';
-
-// create class attribute
-$classes = $classes !== '' ? 'class="' . $classes . '"' : '';
 
 //make the first subtitle letter special
 if ( ! empty( $subtitle ) ) {
@@ -12,7 +13,8 @@ if ( ! empty( $subtitle ) ) {
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
 
-echo '<hgroup ' . $classes . '>
-	<h2 class="headline__secondary">' . $subtitle . '</h2>
-	<h1 class="headline__primary">' . wp_kses_post( $title ) . '</h1>
-</hgroup>';
+?>
+<hgroup class="<?php echo esc_attr( $classes ); ?>">
+	<h2 class="headline__secondary"><?php echo wp_kses_post( $subtitle ); ?></h2>
+	<h1 class="headline__primary"><?php echo wp_kses_post( $title ); ?></h1>
+</hgroup>

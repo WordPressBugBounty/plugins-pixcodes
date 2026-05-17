@@ -41,12 +41,16 @@ editor = '';
 
 		var modal_selector = $( '#pixelgrade_shortcodes_modal' );
 
-		$.ajax( {
-			url: ajaxurl,
-			data: {action: 'wpgrade_get_shortcodes_modal', post_id: $( '#post_ID' ).val()},
-			success: function( data ) {
-				content = JSON.parse( data );
-				modal_selector.html( content );
+			$.ajax( {
+				url: ajaxurl,
+				data: {
+					action: 'wpgrade_get_shortcodes_modal',
+					post_id: $( '#post_ID' ).val(),
+					nonce: window.pixcodesModal ? window.pixcodesModal.nonce : ''
+				},
+				success: function( data ) {
+					content = data && data.success ? data.data : '';
+					modal_selector.html( content );
 				//Variables
 				var details = $( '.details_container .details_content' );
 				var modal_title = $( '.l_pxg_modal .l_modal_title' );

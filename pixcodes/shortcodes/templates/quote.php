@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
 // get needed classes
 $classes = 'pixcode  pixcode--testimonial  testimonial';
 $classes .= ! empty( $text_size ) ? ' testimonial--' . esc_attr( $text_size ) . '-text' : '';
@@ -6,7 +10,7 @@ $classes .= ! empty( $text_size ) ? ' testimonial--' . esc_attr( $text_size ) . 
 $classes = $classes !== '' ? 'class="' . esc_attr( $classes ) . '"' : '';
 
 ?>
-<blockquote <?php echo $classes; ?>>
+<blockquote <?php echo wp_kses_data( $classes ); ?>>
 	<div class="testimonial__content"><?php echo wp_kses_post( $this->get_clean_content( $content ) ); ?></div>
 
 	<?php if ( ! empty( $author ) ) {

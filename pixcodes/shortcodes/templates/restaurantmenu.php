@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
 //initialize things
 $output = '';
 
@@ -260,4 +264,4 @@ if ( true === $opened_list ) {
 //all done - close the wrapper
 $output .= '</div>' . PHP_EOL;
 
-echo $output;
+echo wp_kses_post( $output );

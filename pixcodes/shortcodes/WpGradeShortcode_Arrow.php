@@ -9,7 +9,7 @@ class WpGradeShortcode_Arrow extends WpGradeShortcode {
 	public function __construct( $settings = array() ) {
 		$this->self_closed = true;
 		$this->direct      = true;
-		$this->name        = __( 'Arrow', 'pixcodes_txtd' );
+		$this->name        = __( 'Arrow', 'pixcodes' );
 		$this->code        = 'arrow';
 		$this->icon        = 'icon-arrow-right';
 

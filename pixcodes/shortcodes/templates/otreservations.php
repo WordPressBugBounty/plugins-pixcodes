@@ -1,4 +1,9 @@
-<?php if ( ! empty( $disable_weekends ) ) {
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
+if ( ! empty( $disable_weekends ) ) {
 	$class = $class . ' disable-weekends';
 } ?>
 <div class="pixcode  pixcode--otreservations  otreservations  <?php echo esc_attr( $class ) ?>">
@@ -28,8 +33,8 @@
 
 						for ( $i = $start; $i <= $end; $i += $inc ) {
 							// to the standard format
-							$time      = date( 'g:i a', $i );
-							$timeValue = date( 'g:ia', $i );
+							$time      = gmdate( 'g:i a', $i );
+							$timeValue = gmdate( 'g:ia', $i );
 							$default   = '7:00pm';
 							echo '<option value="' . esc_attr( $timeValue ) . '" ' . ( ( $timeValue == $default ) ? ' selected="selected" ' : '' ) . '>' . esc_html( $time ) . '</option>' . PHP_EOL;
 						}
@@ -41,16 +46,16 @@
 				<div class="otw-party-size-wrap otw-input-wrap">
 					<label for="party-otreservations"><?php echo( ! empty( $labels ) ? esc_html__( 'Party Size', 'pixcodes' ) : '<i class="icon-user"></i>' ) ?></label>
 					<select id="party-otreservations" name="partySize" class="otw-party-size-select selectpicker">
-						<option value="1"><?php esc_html_e( '1 Person', 'pixcodes_txtd' ); ?></option>
-						<option value="2" selected="selected"><?php esc_html_e( '2 People', 'pixcodes_txtd' ); ?></option>
-						<option value="3"><?php esc_html_e( '3 People', 'pixcodes_txtd' ); ?></option>
-						<option value="4"><?php esc_html_e( '4 People', 'pixcodes_txtd' ); ?></option>
-						<option value="5"><?php esc_html_e( '5 People', 'pixcodes_txtd' ); ?></option>
-						<option value="6"><?php esc_html_e( '6 People', 'pixcodes_txtd' ); ?></option>
-						<option value="7"><?php esc_html_e( '7 People', 'pixcodes_txtd' ); ?></option>
-						<option value="8"><?php esc_html_e( '8 People', 'pixcodes_txtd' ); ?></option>
-						<option value="9"><?php esc_html_e( '9 People', 'pixcodes_txtd' ); ?></option>
-						<option value="10"><?php esc_html_e( '10 People', 'pixcodes_txtd' ); ?></option>
+						<option value="1"><?php esc_html_e( '1 Person', 'pixcodes' ); ?></option>
+						<option value="2" selected="selected"><?php esc_html_e( '2 People', 'pixcodes' ); ?></option>
+						<option value="3"><?php esc_html_e( '3 People', 'pixcodes' ); ?></option>
+						<option value="4"><?php esc_html_e( '4 People', 'pixcodes' ); ?></option>
+						<option value="5"><?php esc_html_e( '5 People', 'pixcodes' ); ?></option>
+						<option value="6"><?php esc_html_e( '6 People', 'pixcodes' ); ?></option>
+						<option value="7"><?php esc_html_e( '7 People', 'pixcodes' ); ?></option>
+						<option value="8"><?php esc_html_e( '8 People', 'pixcodes' ); ?></option>
+						<option value="9"><?php esc_html_e( '9 People', 'pixcodes' ); ?></option>
+						<option value="10"><?php esc_html_e( '10 People', 'pixcodes' ); ?></option>
 					</select>
 
 				</div>

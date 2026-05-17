@@ -8,7 +8,7 @@ class WpGradeShortcode_Circle extends WpGradeShortcode {
 
 	public function __construct( $settings = array() ) {
 		$this->self_closed = true;
-		$this->name        = esc_html__( 'Circle Knob', 'pixcodes_txtd' );
+		$this->name        = esc_html__( 'Circle Knob', 'pixcodes' );
 		$this->code        = 'circle';
 		$this->icon        = 'icon-circle-blank';
 		$this->direct      = false;
@@ -16,22 +16,22 @@ class WpGradeShortcode_Circle extends WpGradeShortcode {
 		$this->params = array(
 			'title'  => array(
 				'type'        => 'text',
-				'name'        => esc_html__( 'Title (inside of circle knob)', 'pixcodes_txtd' ),
+				'name'        => esc_html__( 'Title (inside of circle knob)', 'pixcodes' ),
 				'admin_class' => 'span4'
 			),
 			'color'  => array(
 				'type'        => 'text',
-				'name'        => esc_html__( 'Color (knob color in HEX format)', 'pixcodes_txtd' ),
+				'name'        => esc_html__( 'Color (knob color in HEX format)', 'pixcodes' ),
 				'admin_class' => 'span7 push1'
 			),
 			'value'  => array(
 				'type'        => 'text',
-				'name'        => esc_html__( 'Value (0 to 100)', 'pixcodes_txtd' ),
+				'name'        => esc_html__( 'Value (0 to 100)', 'pixcodes' ),
 				'admin_class' => 'span4'
 			),
 			'offset' => array(
 				'type'        => 'text',
-				'name'        => esc_html__( 'Offset Angle (starting angle in degrees - default=0)', 'pixcodes_txtd' ),
+				'name'        => esc_html__( 'Offset Angle (starting angle in degrees - default=0)', 'pixcodes' ),
 				'admin_class' => 'span7 push1'
 			),
 		);

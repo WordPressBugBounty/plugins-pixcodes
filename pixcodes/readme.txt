@@ -1,18 +1,20 @@
 === PixCodes ===
 Contributors: pixelgrade, vlad.olaru, babbardel
-Tags: shortcodes, insert, columns, sliders, tabs, buttons
-Requires at least: 4.9.0
-Tested up to: 6.1.1
-Requires PHP: 5.6.40
-Stable tag: 2.3.7
-License: GPLv2 or later
+Tags: shortcodes, classic-editor, tinymce, columns, buttons
+Requires at least: 5.9.0
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 2.3.8
+License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-PixCodes offers you a nice interface to add shortcodes into editor.
+PixCodes offers a Classic Editor interface for inserting Pixelgrade shortcodes.
 
 == Description ==
 
-With [PixCodes](https://github.com/pixelgrade/pixcodes) you can have a shortcode insert interface.
+With [PixCodes](https://github.com/pixelgrade/pixcodes) you can have a shortcode insert interface for the WordPress Classic Editor.
+
+PixCodes is intended for Classic Editor and TinyMCE workflows. It does not add a block editor interface.
 
 The awesome part is that you can filter any shortcode parameters or overwrite any shortcode template with your theme.
 
@@ -29,6 +31,11 @@ Here is a [detailed documentation](http://github.com/pixelgrade/pixcodes/blob/ma
 3. For further instructions and how to filter parameters or overwrite templates, read our [detailed documentation](http://github.com/pixelgrade/pixcodes/blob/dev/README.md)
 
 == Changelog ==
+
+= 2.3.8 =
+* Updated WordPress compatibility metadata for WordPress 7.0.
+* Clarified Classic Editor support scope.
+* Fixed Plugin Check errors in PixCodes' release package.
 
 = 2.3.7 =
 * Security fixes and enhancements.

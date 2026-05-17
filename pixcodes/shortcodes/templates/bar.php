@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+?>
 <div class="pixcode  pixcode--progressbar  progressbar">
 	<?php if ( $title ) { ?>
 		<div class="progressbar__title"><?php echo wp_kses_post( $title ); ?></div>

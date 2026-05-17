@@ -1,4 +1,9 @@
-<?php $fade = 'fade '; ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
+$fade = 'fade '; ?>
 <div class="pixcode  pixcode--tabs">
 	<ul class="pixcode--tabs__nav  nav  nav-tabs">
 		<?php

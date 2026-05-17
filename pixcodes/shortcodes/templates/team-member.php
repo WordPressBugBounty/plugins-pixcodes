@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+?>
 <div class="pixcode  pixcode--team-member  team-member  <?php echo esc_attr( $class ) ?>">
 
 	<?php if ( ! empty( $image ) ) : ?>

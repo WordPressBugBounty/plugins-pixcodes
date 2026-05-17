@@ -13,7 +13,12 @@ class WpGradeShortcode_Portfolio extends  WpGradeShortcode {
         $this->icon = 'icon-qrcode';
 
 	    // prepare categories
-	    $opts_cats = get_terms('portfolio_cat', array( 'fields' => 'all' ) );
+	    $opts_cats = get_terms(
+		    array(
+			    'taxonomy' => 'portfolio_cat',
+			    'fields'   => 'all',
+		    )
+	    );
 	    $all_categories = array();
 
 	    if ( !empty($opts_cats) && !is_wp_error( $opts_cats )) {

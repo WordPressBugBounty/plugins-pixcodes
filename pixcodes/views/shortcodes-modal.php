@@ -1,23 +1,25 @@
 <?php
-// get the root
-$plug_path = dirname( dirname( __FILE__ ) );
-include_once( $plug_path . "/shortcodes.php" );
-global $wpgrade_shortcodes;
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+// get the root
+$plug_path = dirname( dirname( __FILE__ ) );
+include_once( $plug_path . '/shortcodes.php' );
+global $wpgrade_shortcodes;
+
 global $post;
 
-if ( $_GET['post_id'] ) {
-	$post = get_post( $_GET['post_id'] );
+$post_id = filter_input( INPUT_GET, 'post_id', FILTER_VALIDATE_INT );
+if ( $post_id ) {
+	$post = get_post( $post_id );
 } elseif ( $post === null ) {
-	$post = get_post(1);
+	$post = get_post( 1 );
 } ?>
 <div id="wpgrade_shortcodes">
 	<div class="l_modal_header">
-		<button type="button" class="btn back"><i class="icon-reply"></i><span><?php _e( 'Back', 'pixcodes_txtd' ); ?></span></button>
-		<div class="l_modal_title"><?php _e( 'Choose shortcode:', 'pixcodes_txtd' ); ?></div>
+		<button type="button" class="btn back"><i class="icon-reply"></i><span><?php esc_html_e( 'Back', 'pixcodes' ); ?></span></button>
+		<div class="l_modal_title"><?php esc_html_e( 'Choose shortcode:', 'pixcodes' ); ?></div>
 		<button type="button" class="btn close close-reveal-modal"><i class="icon-remove"></i></button>
 	</div>
 	<div class="l_modal_body three_col">
@@ -33,17 +35,17 @@ if ( $_GET['post_id'] ) {
 			 */
 			$shortcoces_array = apply_filters( 'filter_shortcodes', $shortcoces_array, $post );
 
-			foreach ( $shortcoces_array as $key => $shortcode ) {
-				$class             = 'shortcode_' . $shortcode["name"] . '_open';
-				$data_trigger_open = 'shortcode_' . $shortcode["name"] . '_open';
-				$shortcode_js      = json_encode( (object) $shortcode );
-				if ( $shortcode["direct"] ) {
-					$class .= ' insert-direct-shortcode';
-				} ?>
+				foreach ( $shortcoces_array as $key => $shortcode ) {
+					$class             = 'shortcode_' . $shortcode["name"] . '_open';
+					$data_trigger_open = 'shortcode_' . $shortcode["name"] . '_open';
+					$shortcode_js      = wp_json_encode( (object) $shortcode );
+					if ( $shortcode["direct"] ) {
+						$class .= ' insert-direct-shortcode';
+					} ?>
 				<li class="shortcode">
-					<a class="details <?php echo $class; ?>" data-params='<?php echo $shortcode_js; ?>' data-trigger-open="<?php echo $data_trigger_open ?>">
-						<i class="icon <?php echo $shortcode["icon"]; ?>"></i>
-						<span class="title"><?php echo $shortcode["name"] ?></span>
+					<a class="details <?php echo esc_attr( $class ); ?>" data-params='<?php echo esc_attr( $shortcode_js ); ?>' data-trigger-open="<?php echo esc_attr( $data_trigger_open ); ?>">
+						<i class="icon <?php echo esc_attr( $shortcode["icon"] ); ?>"></i>
+						<span class="title"><?php echo esc_html( $shortcode["name"] ); ?></span>
 					</a>
 					<?php if ( ! $shortcode['direct'] && ! empty( $shortcode['params'] ) ) { ?>
 						<div class="shortcode_params details_content">
@@ -55,14 +57,14 @@ if ( $_GET['post_id'] ) {
 
 											// inject the key in param ... since i was too lazy to do that before
 											$param['param_key'] = $k;
-											echo $wpgrade_shortcodes->render_param( $param );
+											echo wp_kses( $wpgrade_shortcodes->render_param( $param ), pixcodes_shortcode_modal_allowed_html() );
 										} ?>
 
-										<button type="submit" class="btn hidden"><?php _e( 'Submit', 'pixcodes_txtd' ); ?></button>
+										<button type="submit" class="btn hidden"><?php esc_html_e( 'Submit', 'pixcodes' ); ?></button>
 									</div>
 								</fieldset>
 							</form>
-							<div id="data_params" type="hidden" data-params='<?php echo $shortcode_js; ?>'></div>
+							<div id="data_params" type="hidden" data-params='<?php echo esc_attr( $shortcode_js ); ?>'></div>
 						</div>
 					<?php } ?>
 				</li>
@@ -70,8 +72,8 @@ if ( $_GET['post_id'] ) {
 		</ul>
 	</div>
 	<div class="l_modal_footer">
-		<a class="btn btn_secondary close"><?php _e( 'Cancel', 'pixcodes_txtd' ); ?></a>
-		<span><?php _e( 'or', 'pixcodes_txtd' ); ?></span>
-		<a class="btn btn_primary disabled"><?php _e( 'Insert', 'pixcodes_txtd' ); ?></a>
+		<a class="btn btn_secondary close"><?php esc_html_e( 'Cancel', 'pixcodes' ); ?></a>
+		<span><?php esc_html_e( 'or', 'pixcodes' ); ?></span>
+		<a class="btn btn_primary disabled"><?php esc_html_e( 'Insert', 'pixcodes' ); ?></a>
 	</div>
 </div>

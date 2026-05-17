@@ -1,9 +1,13 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
 $class= "span12";
 
 if ( isset($param['admin_class'] ) ) $class = $param['admin_class']; ?>
 
-<div class="<?php echo $class; ?> param-slider" >
+<div class="<?php echo esc_attr( $class ); ?> param-slider" >
     <ul class="slider-heads">
         <li data-index="1"><a href="#t1">Slide 1</a></li>
         <li data-index="0"><a href="#t-last">New Slide</a></li>
@@ -18,4 +22,4 @@ if ( isset($param['admin_class'] ) ) $class = $param['admin_class']; ?>
     </div>
 
 </div>
-<input type="hidden" name="<?php echo $param['param_key'] ?>" />
+<input type="hidden" name="<?php echo esc_attr( $param['param_key'] ); ?>" />

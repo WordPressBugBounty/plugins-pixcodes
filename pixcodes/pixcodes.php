@@ -3,10 +3,17 @@
 Plugin Name: PixCodes
 Plugin URI: https://pixelgrade.com
 Description: WordPress shortcodes plugin everywhere. Loaded with shortcodes, awesomeness and more.
-Version: 2.3.7
+Version: 2.3.8
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
 Author Email: hello@pixelgrade.com
+License: GPL-2.0-or-later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pixcodes
+Domain Path: /lang
+Requires at least: 5.9.0
+Tested up to: 7.0
+Requires PHP: 7.4
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -52,21 +59,18 @@ class WpGradeShortcodes {
 	}
 
 	public function plugin_textdomain() {
-		$domain = 'pixcodes_txtd';
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+		// WordPress.org loads PixCodes language packs automatically.
 	} // end plugin_textdomain
 
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function register_admin_assets( $buttons ) {
-		wp_enqueue_style( 'wpgrade-shortcodes-reveal-styles', $this->plugin_url . 'css/base.css', array( 'wp-color-picker' ) );
+		wp_enqueue_style( 'wpgrade-shortcodes-reveal-styles', $this->plugin_url . 'css/base.css', array( 'wp-color-picker' ), '2.3.8' );
 		wp_enqueue_script( 'select2-js', $this->plugin_url . 'js/select2/select2.js', array(
-				'jquery',
-				'jquery-ui-tabs'
-			) );
+					'jquery',
+					'jquery-ui-tabs'
+				), '2.3.8', true );
 		wp_enqueue_script( 'wp-color-picker' );
 
 		return $buttons;
@@ -109,15 +113,27 @@ class WpGradeShortcodes {
 
 	function addto_mce_wpgrade_shortcodes( $plugin_array ) {
 		$plugin_array['wpgrade'] = $this->plugin_url . 'js/add_shortcode.js';
+		wp_localize_script(
+			'editor',
+			'pixcodesModal',
+			array(
+				'nonce' => wp_create_nonce( 'pixcodes_shortcode_modal' ),
+			)
+		);
 
 		return $plugin_array;
 	}
 
 	public function wpgrade_get_shortcodes_modal() {
+		check_ajax_referer( 'pixcodes_shortcode_modal', 'nonce' );
+
+		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+			wp_send_json_error( esc_html__( 'You are not allowed to access this shortcode modal.', 'pixcodes' ), 403 );
+		}
+
 		ob_start();
 		include( 'views/shortcodes-modal.php' );
-		echo json_encode( ob_get_clean() );
-		die();
+		wp_send_json_success( ob_get_clean() );
 	}
 
 	public function create_wpgrade_shortcodes() {

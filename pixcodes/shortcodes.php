@@ -25,6 +25,7 @@ class WpGradeShortcode {
 	protected $backend_assets;
 	protected $frontend_assets;
 	protected $load_frontend_scripts;
+	protected $assets;
 	//we use this to get the prefix for the meta data from the theme - usually it's short theme name
 	protected $meta_prefix;
 
@@ -109,12 +110,12 @@ class WpGradeShortcode {
 
 			foreach ( $types as $type => $assets ) {
 				foreach ( $assets as $key => $asset ) {
-					$path = WPGRADE_SHORTCODES_URL . $asset['path'];
-					if ( $type == 'js' ) {
-						wp_enqueue_script( $asset['name'], $path, $asset['deps'] );
-					} elseif ( $type == 'css' ) {
-						wp_enqueue_style( $asset['name'], $path, $asset['deps'] );
-					}
+						$path = WPGRADE_SHORTCODES_URL . $asset['path'];
+						if ( $type == 'js' ) {
+							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.8', true );
+						} elseif ( $type == 'css' ) {
+							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.8' );
+						}
 				}
 			}
 		}
@@ -130,12 +131,12 @@ class WpGradeShortcode {
 
 			foreach ( $types as $type => $assets ) {
 				foreach ( $assets as $key => $asset ) {
-					$path = WPGRADE_SHORTCODES_URL . $asset['path'];
-					if ( $type == 'js' ) {
-						wp_enqueue_script( $asset['name'], $path, $asset['deps'] );
-					} elseif ( $type == 'css' ) {
-						wp_enqueue_style( $asset['name'], $path, $asset['deps'] );
-					}
+						$path = WPGRADE_SHORTCODES_URL . $asset['path'];
+						if ( $type == 'js' ) {
+							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.8', true );
+						} elseif ( $type == 'css' ) {
+							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.8' );
+						}
 				}
 			}
 		}
@@ -153,13 +154,13 @@ class WpGradeShortcode {
 		$file_path = WPGRADE_SHORTCODES_PATH . 'params/' . $file_name;
 
 		if ( ! file_exists( $file_path ) ) {
-			echo '<span class="error">Inexistent param</span>';
+			return '<span class="error">' . esc_html__( 'Inexistent param', 'pixcodes' ) . '</span>';
 		}
 		ob_start();
 
 		include( $file_path );
 
-		echo ob_get_clean();
+		return ob_get_clean();
 	}
 
 }

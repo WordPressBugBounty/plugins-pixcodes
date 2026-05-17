@@ -109,26 +109,32 @@ class WpGradeShortcode_TwitterFeed extends WpGradeShortcode {
 
 		$difference = current_time( 'timestamp' ) - $timestamp;
 
-		if ( $difference >= 60 * 60 * 24 * 365 ) {        // if more than a year ago
-			$int = intval( $difference / ( 60 * 60 * 24 * 365 ) );
-			$r   = sprintf( _n( '%d year ago', '%d years ago', $int, 'pixcodes_txtd' ), $int );
-		} elseif ( $difference >= 60 * 60 * 24 * 7 * 5 ) {  // if more than five weeks ago
-			$int = intval( $difference / ( 60 * 60 * 24 * 30 ) );
-			$r   = sprintf( _n( '%d month ago', '%d months ago', $int, 'pixcodes_txtd' ), $int );
-		} elseif ( $difference >= 60 * 60 * 24 * 7 ) {        // if more than a week ago
-			$int = intval( $difference / ( 60 * 60 * 24 * 7 ) );
-			$r   = sprintf( _n( '%d week ago', '%d weeks ago', $int, 'pixcodes_txtd' ), $int );
-		} elseif ( $difference >= 60 * 60 * 24 ) {      // if more than a day ago
-			$int = intval( $difference / ( 60 * 60 * 24 ) );
-			$r   = sprintf( _n( '%d day ago', '%d days ago', $int, 'pixcodes_txtd' ), $int );
-		} elseif ( $difference >= 60 * 60 ) {         // if more than an hour ago
-			$int = intval( $difference / ( 60 * 60 ) );
-			$r   = sprintf( _n( '%d hour ago', '%d hours ago', $int, 'pixcodes_txtd' ), $int );
-		} elseif ( $difference >= 60 ) {            // if more than a minute ago
-			$int = intval( $difference / ( 60 ) );
-			$r   = sprintf( _n( '%d minute ago', '%d minutes ago', $int, 'pixcodes_txtd' ), $int );
+			if ( $difference >= 60 * 60 * 24 * 365 ) {        // if more than a year ago
+				$int = intval( $difference / ( 60 * 60 * 24 * 365 ) );
+				/* translators: %d: number of years. */
+				$r   = sprintf( _n( '%d year ago', '%d years ago', $int, 'pixcodes' ), $int );
+			} elseif ( $difference >= 60 * 60 * 24 * 7 * 5 ) {  // if more than five weeks ago
+				$int = intval( $difference / ( 60 * 60 * 24 * 30 ) );
+				/* translators: %d: number of months. */
+				$r   = sprintf( _n( '%d month ago', '%d months ago', $int, 'pixcodes' ), $int );
+			} elseif ( $difference >= 60 * 60 * 24 * 7 ) {        // if more than a week ago
+				$int = intval( $difference / ( 60 * 60 * 24 * 7 ) );
+				/* translators: %d: number of weeks. */
+				$r   = sprintf( _n( '%d week ago', '%d weeks ago', $int, 'pixcodes' ), $int );
+			} elseif ( $difference >= 60 * 60 * 24 ) {      // if more than a day ago
+				$int = intval( $difference / ( 60 * 60 * 24 ) );
+				/* translators: %d: number of days. */
+				$r   = sprintf( _n( '%d day ago', '%d days ago', $int, 'pixcodes' ), $int );
+			} elseif ( $difference >= 60 * 60 ) {         // if more than an hour ago
+				$int = intval( $difference / ( 60 * 60 ) );
+				/* translators: %d: number of hours. */
+				$r   = sprintf( _n( '%d hour ago', '%d hours ago', $int, 'pixcodes' ), $int );
+			} elseif ( $difference >= 60 ) {            // if more than a minute ago
+				$int = intval( $difference / ( 60 ) );
+				/* translators: %d: number of minutes. */
+				$r   = sprintf( _n( '%d minute ago', '%d minutes ago', $int, 'pixcodes' ), $int );
 		} else {                                // if less than a minute ago
-			$r = __( 'moments ago', 'pixcodes_txtd' );
+			$r = __( 'moments ago', 'pixcodes' );
 		}
 
 		return $r;

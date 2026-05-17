@@ -8,7 +8,7 @@ class WpGradeShortcode_AverageScore extends WpGradeShortcode {
 
 	public function __construct( $settings = array() ) {
 		$this->self_closed = true;
-		$this->name        = esc_html__( 'Average score', 'pixcodes_txtd' );
+		$this->name        = esc_html__( 'Average score', 'pixcodes' );
 		$this->code        = 'average_score';
 		$this->icon        = 'icon-tasks';
 		$this->direct      = true;

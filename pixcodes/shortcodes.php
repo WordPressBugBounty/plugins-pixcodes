@@ -112,9 +112,9 @@ class WpGradeShortcode {
 				foreach ( $assets as $key => $asset ) {
 						$path = WPGRADE_SHORTCODES_URL . $asset['path'];
 						if ( $type == 'js' ) {
-							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.8', true );
+							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.9', true );
 						} elseif ( $type == 'css' ) {
-							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.8' );
+							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.9' );
 						}
 				}
 			}
@@ -133,9 +133,9 @@ class WpGradeShortcode {
 				foreach ( $assets as $key => $asset ) {
 						$path = WPGRADE_SHORTCODES_URL . $asset['path'];
 						if ( $type == 'js' ) {
-							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.8', true );
+							wp_enqueue_script( $asset['name'], $path, $asset['deps'], '2.3.9', true );
 						} elseif ( $type == 'css' ) {
-							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.8' );
+							wp_enqueue_style( $asset['name'], $path, $asset['deps'], '2.3.9' );
 						}
 				}
 			}

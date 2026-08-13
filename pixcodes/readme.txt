@@ -2,9 +2,9 @@
 Contributors: pixelgrade, vlad.olaru, babbardel
 Tags: shortcodes, classic-editor, tinymce, columns, buttons
 Requires at least: 5.9.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.3.8
+Stable tag: 2.3.9
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ Here is a [detailed documentation](http://github.com/pixelgrade/pixcodes/blob/ma
 3. For further instructions and how to filter parameters or overwrite templates, read our [detailed documentation](http://github.com/pixelgrade/pixcodes/blob/dev/README.md)
 
 == Changelog ==
+
+= 2.3.9 =
+* Declared compatibility with WordPress 7.1.
 
 = 2.3.8 =
 * Updated WordPress compatibility metadata for WordPress 7.0.

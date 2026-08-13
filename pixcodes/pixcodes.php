@@ -3,7 +3,7 @@
 Plugin Name: PixCodes
 Plugin URI: https://pixelgrade.com
 Description: WordPress shortcodes plugin everywhere. Loaded with shortcodes, awesomeness and more.
-Version: 2.3.8
+Version: 2.3.9
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
 Author Email: hello@pixelgrade.com
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: pixcodes
 Domain Path: /lang
 Requires at least: 5.9.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 */
 
@@ -66,11 +66,11 @@ class WpGradeShortcodes {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function register_admin_assets( $buttons ) {
-		wp_enqueue_style( 'wpgrade-shortcodes-reveal-styles', $this->plugin_url . 'css/base.css', array( 'wp-color-picker' ), '2.3.8' );
+		wp_enqueue_style( 'wpgrade-shortcodes-reveal-styles', $this->plugin_url . 'css/base.css', array( 'wp-color-picker' ), '2.3.9' );
 		wp_enqueue_script( 'select2-js', $this->plugin_url . 'js/select2/select2.js', array(
 					'jquery',
 					'jquery-ui-tabs'
-				), '2.3.8', true );
+				), '2.3.9', true );
 		wp_enqueue_script( 'wp-color-picker' );
 
 		return $buttons;
